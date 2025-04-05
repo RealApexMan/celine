@@ -1,0 +1,34 @@
+<section class="skills">
+    <h2>Mes Compétences & Mon Potentiel</h2>
+    
+    <!-- Ma Vision -->
+    <div class="vision">
+        <h3>🎬 Ma vision</h3>
+        <p>L'audiovisuel, c'est bien plus qu'une technique : c'est une manière de raconter des histoires, de capturer des émotions et de transmettre des messages forts.</p>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="soft-skills">
+        <h3>💡 Mes forces</h3>
+        <div class="skills-list">
+            @for (softSkill of softSkills; track softSkill) {
+            <div class="skill">
+                <span>{{ softSkill.emoji }}</span>
+                <h4>{{softSkill.title}}</h4>
+                <p>{{softSkill.description}}</p>
+            </div>
+        }
+        </div>
+    </div>
+
+    <!-- Evolution / Apprentissage -->
+    <div class="evolution">
+        <h3>📈 Mon évolution</h3>
+        <p>J’apprends vite et je m’adapte aux outils de l’audiovisuel. Voici quelques logiciels que je commence à maîtriser :</p>
+        <ul>
+            @for (software of softwares; track software) {
+            <li>{{software.emoji}} {{ software.name }}</li>
+            }
+        </ul>
+    </div>
+</section>

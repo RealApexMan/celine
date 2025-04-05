@@ -1,0 +1,86 @@
+<section class="contact">
+    <div class="contact-container">
+      <h2>Me contacter</h2>
+      <p>Une question ? Une envie de collaborer ? N’hésitez pas à m'envoyer un message !</p>
+  
+      <form (ngSubmit)="onSubmit()" #form="ngForm" class="contact-form">
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input 
+          type="text" 
+          name="name"
+          id="name" 
+          placeholder="Votre nom" 
+          [(ngModel)]="name"
+          #nameField="ngModel"
+          required
+          minlength="3"
+              maxlength="20"
+              pattern="[a-zA-Z-éèïë]+"
+              [class.is-invalid]="nameField.dirty && nameField.invalid"
+            />
+          
+          @if(nameField.dirty && nameField.hasError('required')) {
+            <div class="form-text text-danger" data-testid="error-name-required">Le nom est requis.</div>
+          }
+          @if(nameField.dirty && nameField.hasError('minlength')) {
+            <div class="form-text text-danger" data-testid="error-name-minlength">
+              Le nom doit contenir au moins {{ nameField.getError('minlength').requiredLength }} caractères.
+            </div>
+          }
+          @if(nameField.dirty && nameField.hasError('maxlength')) {
+            <div class="form-text text-danger" data-testid="error-name-maxlength">
+              Le nom doit contenir au maximum {{ nameField.getError('maxlength').requiredLength }} caractères.
+            </div>
+          }
+          @if(nameField.dirty && nameField.hasError('pattern')) {
+            <div class="form-text text-danger" data-testid="error-name-pattern">
+              Le nom ne doit contenir que des lettres
+            </div>
+          }
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+          type="email" 
+          name="email"
+          id="email" 
+          placeholder="Votre email" 
+          [(ngModel)]="email"
+          #emailField="ngModel"
+          autocomplete="email"
+          required
+          email
+          [class.is-invalid]="emailField.dirty && emailField.invalid"
+          />
+        
+        @if(emailField.dirty && emailField.hasError('required')) {
+          <div class="form-text text-danger" data-testid="error-email-required">L'email est requis.</div>
+        }
+        @if(emailField.dirty && emailField.hasError('email')) {
+          <div class="form-text text-danger" data-testid="error-email-pattern">
+            L'email doit être valide
+          </div>
+        }
+        
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="Votre message..."></textarea>
+        </div>
+        <button type="submit"
+        [disabled]="form.invalid"
+        >Envoyer</button>
+      </form>
+  
+      <div class="contact-infos">
+        <p>📧 Email : <a href="mailto:contact@celine-portfolio.com">xxxxx&#64;xxxxx.com</a></p>
+        <div class="social-icons">
+          <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
